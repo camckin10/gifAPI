@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gifphy API Assignment</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<!--in case decide to add own stylesheet(css)-->
+	<link rel="stylesheet" type="text/css" href="../assets/style/style.css">
+</head>
+<body>
+
+	<!--jumbotron/header row-->
+	<div class="row">
+	<div class="container-fluid">
+   
+   <div class="jumbotron jumbotron-fluid">
+  	<div class="container">
+    	<h1 class="display-3">All My Favorite Things</h1>
+    	<p class="lead">Click on the buttons below to display my favorite things</p>
+
+
+  	</div>
+     </div>
+</div>
+
+<!--row for buttons;already listed favorite things-->
+<!--row for also input form for new buttons-->
+<div class="row">
+	<div class="col-lg-6">
+		<button class="btn btn-primary" id="show" data-search="Books">Books</button>
+		<button class="btn btn-primary" id="show" data-search="Hugs">Hugs</button>
+		<button class="btn btn-primary" id="show" data-search="Pasta">Pasta</button>
+		<button class="btn btn-primary" id="show" data-search="Candy">Candy</button>
+
+		<!--button on line 37 works, but does not give intended effect-->
+		<!--<button id="newFavoriteThing"></button>-->
+	</div>
+
+	<!--input for new buttons to be added-->
+	<div class="col-lg-6">
+		<form action="form-inline" id="favoriteThingsSearch">
+			<div class="form-group">
+				<label for="favoriteThingsInput">Add more of my favorite things</label>
+				<input type="text" id="favoriteThingsInput">
+			</div>
+			<input id="addFavoriteThings" type="submit" value="submit">
+		</form>
+	</div>
+</div>
+
+
+
+<!--use the remaining space on HTML page for display of gifs-->
+<div class="row">
+	<div id="showGifs"></div>
+</div>
+
+<!--link to jquery above script tags with js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	// Event listener for all button elements
+    $("button").on("click", function() {
+
+      // this = button created in on click function
+      var topics = $(this).attr("data-search");
+
+      //create rule so a new button is added when clicking?
+      //user can enter a topic, and add a button to favoriteThings topic
+      //$("#newFavoriteThing").append("<button>");
+
+      // Constructing a URL to search Giphy for type of topics listed in HTML 
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        topics + "&api_key=RBewSGhRETQiOqgyvlc8VecQPVRMNqKg&limit=10";
+
+      // Performing our AJAX GET request
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+        // After the data comes back from the API
+        .done(function(response) {
+          // Storing an array of results in the results variable
+          var results = response.data;
+
+          // Looping over every result item
+          for (var i = 0; i < results.length; i++) {
+
+            // Only taking action if the photo has an appropriate rating
+            if (results[i].rating !== "r") {
+              // Creating a div with the class "item"
+              var gifDiv = $("<div class='item'>");
+
+              // Storing the result item's rating
+              var rating = results[i].rating;
+
+              // Creating a paragraph tag with the result item's rating
+              var p = $("<p>").text("Rating: " + rating);
+
+              // Creating an image tag
+              var topicImage = $("<img>");
+
+              // Giving the image tag an src attribute of a proprty pulled off the
+              // result item
+              topicImage.attr("src", results[i].images.fixed_height.url);
+
+              // Appending the paragraph and topicImage we created to the "gifDiv" div we created
+              gifDiv.append(p);
+              gifDiv.append(topicImage);
+
+              // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+              $("#showGifs").prepend(gifDiv);
+            }
+          }
+        });
+    });
+
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
