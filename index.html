@@ -7,6 +7,7 @@
 
 	<!--in case decide to add own stylesheet(css)-->
 	<link rel="stylesheet" type="text/css" href="assets/style/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 </head>
 <body>
 
@@ -27,7 +28,7 @@
 <!--row for buttons;already listed favorite things-->
 <!--row for also input form for new buttons-->
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-6" id="buttonsToClick">
 		<button class="btn btn-primary" id="show" data-search="Books">Books</button>
 		<button class="btn btn-primary" id="show" data-search="Hugs">Hugs</button>
 		<button class="btn btn-primary" id="show" data-search="Pasta">Pasta</button>
@@ -59,11 +60,11 @@
 <!--link to jquery above script tags with js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	// Event listener for all button elements
-    $("button").on("click", function() {
 
-      // this = button created in on click function
-      var topics = $(this).attr("data-search");
+  var topics = ["Books", "Hugs", "Pasta", "Candy"];
+
+	// Event listener for all button elements
+    $("#buttonsToClick").on("click","button", function() {
 
       //create rule so a new button is added when clicking?
       //user can enter a topic, and add a button to favoriteThings topic
@@ -80,6 +81,8 @@
         })
         // After the data comes back from the API
         .done(function(response) {
+
+          console.log(response);
           // Storing an array of results in the results variable
           var results = response.data;
 
@@ -112,8 +115,59 @@
               $("#showGifs").prepend(gifDiv);
             }
           }
+
+
+          //code for animating and not animating gifs 
+          
         });
-    });
+    }); 
+
+        //input HTML code--for reference
+        //<input id="addFavoriteThings" type="submit" value="submit">
+
+        //next steps in psuedocode
+        // read out value from #favoriteThingsInput
+        // create new button html with value from #favoriteThingsInput as data-search attribute value
+
+       function displayButtons() { 
+          //loop to run through results, and create button from results title
+          $("#buttonsToClick").empty();
+        for (var i = 0; i < topics.length; i++) {
+        var test = $('<button class="btn btn-primary">');
+        test.attr("id", "show");
+        test.attr("data-search", topics[i]);
+        test.text(topics[i]);
+        $("#buttonsToClick").append(test);
+    }
+  }
+
+
+         //Submit button click event takes search term from form input, trims and pushes to topics array, displays button
+        $("#addFavoriteThings").on("click", function(event) {
+        event.preventDefault();
+        var newThing = $("#favoriteThingsInput").val().trim();
+        if (topics.indexOf(newThing) > -1) {
+          alert("wrong!!!!");
+        } else {
+          topics.push(newThing);
+          console.log(topics);
+          $("#favoriteThingsInput").val('');
+          displayButtons();
+        }
+      })
+
+      
+
+        // append newButtonHtml to buttonsToClick block
+      //$("#addFavoriteThings").on("click", function() {
+
+  
+      //empty search box; empty search results
+      //$("#buttonsToClick").empty();
+
+       
+       
+
 
 </script>
 

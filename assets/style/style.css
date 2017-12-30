@@ -2,12 +2,11 @@ body {
 	background-color: #FF69B4;
 }
 
-h1,h4 {
-	color:;
-}
+
 
 .jumbotron {
-	color:;
+	background-color:#FFF0F5;
+	font-family: 'Shadows Into Light', cursive;
 	text-align: center;
 }
 
@@ -15,11 +14,19 @@ h1,h4 {
 /*change color of button*/
 .btn  {
 	background-color:#FFC0CB;
-	
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 45px;
+
 }
+
+.btn:hover{ 
+	background-color: #F8F8FF;
+ }
 
 /*change font/color of input area*/
 .form-group {
+	font-size:50px;
 	font-weight: bold;
-	color:;
+    font-family: 'Shadows Into Light', cursive;
+
 }
