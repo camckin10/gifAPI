@@ -6,15 +6,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 	<!--in case decide to add own stylesheet(css)-->
-	<link rel="stylesheet" type="text/css" href="../assets/style/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/style/style.css">
 </head>
 <body>
 
 	<!--jumbotron/header row-->
 	<div class="row">
-	<div class="container-fluid">
+	<div class="container">
    
-   <div class="jumbotron jumbotron-fluid">
+   <div class="jumbotron">
   	<div class="container">
     	<h1 class="display-3">All My Favorite Things</h1>
     	<p class="lead">Click on the buttons below to display my favorite things</p>
@@ -27,7 +27,7 @@
 <!--row for buttons;already listed favorite things-->
 <!--row for also input form for new buttons-->
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-md-6">
 		<button class="btn btn-primary" id="show" data-search="Books">Books</button>
 		<button class="btn btn-primary" id="show" data-search="Hugs">Hugs</button>
 		<button class="btn btn-primary" id="show" data-search="Pasta">Pasta</button>
@@ -38,7 +38,7 @@
 	</div>
 
 	<!--input for new buttons to be added-->
-	<div class="col-lg-6">
+	<div class="col-md-6">
 		<form action="form-inline" id="favoriteThingsSearch">
 			<div class="form-group">
 				<label for="favoriteThingsInput">Add more of my favorite things</label>
