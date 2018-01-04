@@ -1,6 +1,6 @@
 
 
-  var topics = ["Books", "Sleep", "Pasta", "Candy"];
+  var topics = ["Books", "Hugs", "Pasta", "Candy"];
 
 	// Event listener for all button elements
     $("#buttonsToClick").on("click","button", function() {
