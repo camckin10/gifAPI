@@ -1,3 +1,14 @@
+//Successes
+//can pull from GIPHY API
+//gifs are paused and animated when clicked
+//buttons can be added based on input
+//
+
+//Issues
+//once button created through input, buttons get smaller, and can no longer show test of buttons. 
+//button issue could be a style issue
+//ratings are cut off on browser
+
 var topics = ["Books", "Sleep", "Pasta", "Candy"];
 
 
@@ -86,4 +97,17 @@ function displayButtons() {
 	}
 }
 
+//submit button click event
+$("#addFavoriteThings").on("click",function(event){
+	event.preventDefault();
+	var newThing= $("#favoriteThingsInput").val().trim();
+	if (topics.indexOf(newThing)> -1) {
+		alert("wrong");
+	} else {
+		topics.push(newThing);
+		console.log(topics);
+		$("#favoriteThingsInput").val('');
+		displayButtons();
+	}
+})
 

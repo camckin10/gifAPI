@@ -23,6 +23,10 @@ body {
 	background-color: #F8F8FF;
  }
 
+p {
+	text:align;
+}
+
 /*change font/color of input area*/
 .form-group {
 	font-size:50px;
