@@ -1,6 +1,14 @@
+//As of 1-6-18
+//Successes
+//can pull from Giphy API
+//shows gifs when click on button
+
+//Issues
+//new button is no longer being added to html
+//not pulling  gifs based on new button
 
 
-  var topics = ["Books", "Hugs", "Pasta", "Candy"];
+  //svar topics = ["Books", "Hugs", "Pasta", "Candy"];
 
 	// Event listener for all button elements
     $("#buttonsToClick").on("click","button", function() {
@@ -8,10 +16,11 @@
       //create rule so a new button is added when clicking?
       //user can enter a topic, and add a button to favoriteThings topic
       //$("#newFavoriteThing").append("<button>");
+      var searchStuff = $(this).attr('data-search');
 
       // Constructing a URL to search Giphy for type of topics listed in HTML 
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        topics + "&api_key=RBewSGhRETQiOqgyvlc8VecQPVRMNqKg&limit=10";
+        searchStuff + "&api_key=RBewSGhRETQiOqgyvlc8VecQPVRMNqKg&limit=10";
 
       // Performing our AJAX GET request
       $.ajax({
@@ -71,11 +80,11 @@
        function displayButtons() { 
           //loop to run through results, and create button from results title
           $("#buttonsToClick").empty();
-        for (var i = 0; i < topics.length; i++) {
+        for (var i = 0; i < searchStuff.length; i++) {
         var test = $('<button class="btn btn-primary">');
         test.attr("id", "show");
-        test.attr("data-search", topics[i]);
-        test.text(topics[i]);
+        test.attr("data-search", searchStuff[i]);
+        test.text(searchStuff[i]);
         $("#buttonsToClick").append(test);
     }
   }
@@ -85,11 +94,11 @@
         $("#addFavoriteThings").on("click", function(event) {
         event.preventDefault();
         var newThing = $("#favoriteThingsInput").val().trim();
-        if (topics.indexOf(newThing) > -1) {
+        if (searchStuff.indexOf(newThing) > -1) {
           alert("wrong!!!!");
         } else {
-          topics.push(newThing);
-          console.log(topics);
+          searchStuff.push(newThing);
+          console.log(searchStuff);
           $("#favoriteThingsInput").val('');
           displayButtons();
         }
