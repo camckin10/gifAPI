@@ -87,12 +87,16 @@ $(document).on("click", ".picture", function () {
 	}
 })
 
+
+
 function displayButtons() {
 	$("#buttonsToClick").empty();
 	for(var i = 0; i <topics.length; i++) {
-		var test= $('<button class="btn btn-primary">');
+		var test= $('<button>');
 		test.attr("id", "show");
 		test.attr("data-search", topics[i]);
+		test.addClass("btn btn-primary");
+		test.text(topics[i]);
 		$("#buttonsToClick").append(test);
 	}
 }
