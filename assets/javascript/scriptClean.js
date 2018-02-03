@@ -7,7 +7,7 @@
 //Issues
 //once button created through input, buttons get smaller, and can no longer show test of buttons. 
 //button issue could be a style issue
-//ratings are cut off on browser
+//ratings are cut off on browser 
 
 var topics = ["Books", "Sleep", "Pasta", "Candy"];
 
