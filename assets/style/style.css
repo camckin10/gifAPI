@@ -1,36 +1,36 @@
 body {
-	background-color: #FF69B4;
+    background-color: #FF69B4;
+    padding-left: 25px;
 }
 
-
-
 .jumbotron {
-	background-color:#FFF0F5;
-	font-family: 'Shadows Into Light', cursive;
-	text-align: center;
+    background-color: #FFF0F5;
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
 }
 
 
 /*change color of button*/
-.btn  {
-	background-color:#FFC0CB;
+
+.btn {
+    background-color: #FFC0CB;
     font-family: 'Shadows Into Light', cursive;
     font-size: 45px;
-
 }
 
-.btn:hover{ 
-	background-color: #F8F8FF;
- }
+.btn:hover {
+    background-color: #F8F8FF;
+}
 
 p {
-	text:align;
+    text: align;
 }
 
-/*change font/color of input area*/
-.form-group {
-	font-size:50px;
-	font-weight: bold;
-    font-family: 'Shadows Into Light', cursive;
 
+/*change font/color of input area*/
+
+.form-group {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Shadows Into Light', cursive;
 }
