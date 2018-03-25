@@ -10,8 +10,8 @@ Prerequisites-
 You will need an API key from the GIPHY API if you wish to change any part of the code.
 
 Give examples-
-Installing
 Download the website/app, and then run the website in your preferred browser.
+You can check out the website here: https://camckin10.github.io/gifAPI/
 
 Built With-
 HTML5/CSS3/JS/jQuery - languages used
